@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Cancion from "../Cancion/Cancion"
+import Cancion from "../Cancion/Cancion"      //no esta siendo utilizado
 
 class Canciones extends Component {
     constructor(props){
@@ -25,4 +25,4 @@ class Canciones extends Component {
   }
 }
 
-export default  Canciones
+export default  Canciones;
