@@ -7,7 +7,8 @@ class Cancion extends Component{
         super(props)
         this.state = {
             //cosas de favoritos
-            descripcion: ''
+            descripcion: '',
+            mostrarMas:false
         }
     }
 
@@ -34,7 +35,7 @@ class Cancion extends Component{
                     </Link> */} aca hay que poner otra url. 
                     {
                         this.state.descripcion === ''   //haciendo funcionalidad para ver mas o menos informacion sobre la descripcion de las tarjetas
-                        ? <p onClick={() => this.masInformacion()}>Ver mas informacion</p>
+                        ? <p onClick={() => this.masInformacion()}>Ver mas informacion</p> // me puedo hacer un if diciendo si mostras mas false y si si true
                         : <p onClick={() => this.menosInformacion()}>Ver menos informacion</p>
                     }
                 
