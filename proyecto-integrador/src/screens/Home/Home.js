@@ -9,7 +9,7 @@ class Home extends Component {
     constructor(){  //fijarse si agregar props
         super()  
         this.state ={
-            busqueda:'',
+            buscador:'',
             topCanciones: [],
            // loader: true
 
@@ -31,9 +31,9 @@ class Home extends Component {
             <React.Fragment>
                 <h1>Top 10 Canciones</h1>
                 <Link to='/VerTodas'>Ver Todas</Link>
-                <section className='movie-container'>
+                <section className='cancion-container'>
                 {
-                    this.state.topCanciones.slice(0,6).map((Cancion,idx) => <CancionTarjeta key={Cancion.title + idx} cancionData={Cancion}/>)
+                    this.state.topCanciones.slice(0,6).map((Cancion,idx) => <Cancion key={Cancion.title + idx} topCanciones={Cancion}/>)
                 }
                 </section>
             </React.Fragment>
