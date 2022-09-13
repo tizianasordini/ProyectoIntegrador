@@ -9,9 +9,10 @@ import NotFound from './screens/NotFound/NotFound'
 import Footer from './components/Footer/Footer'
 
 function App() {
+  const links = ['Home', 'Favoritos', 'Ver más']
   return (
     <>
-      <Header />
+      <Header links={links}/>
       <Switch>
         <Route path='/' exact={true} component={Home} />
         <Route path='/VerTodas' component={VerTodas} />
