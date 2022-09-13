@@ -1,0 +1,38 @@
+.navMenu {
+    height: 80px;
+    width: 100%;
+    background: #081c3c;
+    display: flex;
+    flex-direction: row;
+    
+}
+.logo {
+    display: block;
+    width: 20%;
+    height: 80px;
+}
+
+
+#menu {
+    display: flex;
+    align-items: center;
+}
+#menu ul {
+    align-items: center;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    margin: 0px 30px;
+    padding-inline-start: 0px;
+    justify-content: center;
+}
+#menu ul li {
+    font-size: 18px;
+    margin: 5px 10px;
+    align-items: center;
+}
+
+#menu ul li a {
+    color: white;
+    text-decoration: none;
+}
