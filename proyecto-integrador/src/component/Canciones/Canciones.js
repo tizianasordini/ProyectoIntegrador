@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Cancion from "../Cancion/Cancion"
+//import Cancion from "../Cancion/Cancion"
 
 class Canciones extends Component {
     constructor(props){
