@@ -1,4 +1,15 @@
-import React, { Component } from 'react'
+import React from "react";
+
+function NotFound(){
+  return(
+    <div>
+      <h2>No se encuentran resultados</h2>
+    </div>
+  )
+}
+export default NotFound;
+
+/* import React, { Component } from 'react'
 
 class NotFound extends Component {
   render() {
@@ -9,4 +20,4 @@ class NotFound extends Component {
 }
 
 export default NotFound;
-
+*/
