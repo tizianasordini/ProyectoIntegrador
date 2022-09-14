@@ -1,0 +1,17 @@
+*{
+    color: burlywood;
+    background-color: aquamarine;
+}
+
+
+.cancion-conteiner {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+/*.imgagenLoader{
+    min-height: 250px;
+    min-width: 200px;
+}*/ 
