@@ -42,16 +42,16 @@ class Home extends Component {
         })
     }
 
-    buscador(){
-        if (this.state.input !=='') {
-            fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apikey}&query=${this.state.input}`) //aca va la api key de canciones 
-            .then (res=> res.json())
-            .then(data => {
-                this.setState ({data:data.results}, () => console.log(data.results))
-            })
-            .catch (e => console.log(e))
-        }
-    }
+    // buscador(){
+    //     if (this.state.input !=='') {
+    //         fetch() //aca va la api key de canciones 
+    //         .then (res=> res.json())
+    //         .then(data => {
+    //             this.setState ({data:data.results}, () => console.log(data.results))
+    //         })
+    //         .catch (e => console.log(e))
+    //     }
+    // }
 
     render(){
         return (
@@ -63,7 +63,7 @@ class Home extends Component {
                     <input type='text' placeholder='cancion' onChange={(event)=> this.saveChanges(event)} value={this.state.input} />
                     <input type='submit' value='submit'/>  
                 </form>
-            </React.Fragment> //falta terminar el buscador . 
+            </React.Fragment> //falta
             : //si no pongo los dos puntos no separo entonces salta error. 
 
 
