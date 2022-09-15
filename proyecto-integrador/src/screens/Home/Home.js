@@ -20,9 +20,9 @@ class Home extends Component {
         fetch('https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/tracks&top?limit=10')
         .then(response => response.json()) //parciamos a json
         .then(data => this.setState({
-            topCanciones: data.results,
+            topCanciones: data.data,
            // loader: false
-        }))
+        }, console.log("QUE LLEGO", data.data)))
         .catch(error => console.log('El error fue:'+ error)) //preguntar si esta bien el catch
     }
 
@@ -74,7 +74,7 @@ class Home extends Component {
                 <Link to='/VerTodas'>Ver Todas</Link>
                 <section className='cancion-container'>
                 {
-                    this.state.topCanciones.slice(0,6).map((Cancion,idx) => <Cancion key={Cancion.title + idx} topCanciones={Cancion}/>)
+                    this.state.topCanciones.slice(0,6).map((musica,idx) => <Cancion key={musica.title + idx} topCanciones={musica} />)
                 }
                 </section>
             </React.Fragment>
