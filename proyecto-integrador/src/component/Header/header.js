@@ -3,7 +3,7 @@ import './header.css'
 
 function Header(props){
     return(
-        <React.Fragment>
+        <>
                 <nav className="navMenu">
                     <div className="logo">
                         <img src="" alt=""/>
@@ -17,7 +17,7 @@ function Header(props){
                         </ul>
                     </div>
                 </nav>
-    </React.Fragment>
+    </>
     )
 }
 
