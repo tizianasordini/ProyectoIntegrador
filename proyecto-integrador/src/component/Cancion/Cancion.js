@@ -30,7 +30,7 @@ class Cancion extends Component{
         return (
             <React.Fragment>
                 <article className='cacion-tarjeta'>
-                    {<Link className='cancion-contenido' to={`/detalle/id/${this.props.topCanciones.id}`}>
+                    {<Link className='cancion-contenido' to={`/Detalle/${this.props.topCanciones.id}`}>
                         <img src={`https://e-cdns-images.dzcdn.net/images/cover/${this.props.topCanciones.md5_image}/120x120-000000-80-0-0.jpg`} alt={this.props.topCanciones.title} /> 
                         <h2>{this.props.topCanciones.title}</h2>
                         <p>{this.state.descripcion}</p>

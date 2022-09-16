@@ -1,16 +1,19 @@
 import React, {Component} from 'react';
+import { Link } from "react-router-dom";
 
 class Detalle extends Component {
 
     constructor(props){
         super(props)
         this.state={
+          id: this.params.id,
           canciones: []
         }
     }
     
     componentDidMount(){
-      fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0`)
+      console.log("estamos aca");
+      fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/album/${this.state.id}`)
         .then(response => response.json())
         .then(data => this.setState({
           canciones: data.data
