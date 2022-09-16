@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { Link } from 'react-router-dom';
-import './Cancion.css';
+
 
 class Cancion extends Component{
     constructor(props){

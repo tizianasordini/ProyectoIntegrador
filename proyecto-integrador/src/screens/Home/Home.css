@@ -1,17 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500&display=swap');
+
 *{
-    color: rgb(245, 238, 229);
-    background-color: rgb(46, 76, 110);
+    color: lightgray;
+    background-color: black;
 }
 
 
-.cancion-conteiner {
+.cancion-container {
     display: flex;
     flex-direction: row;
+    justify-content: space-around;    
     flex-wrap: wrap;
-    justify-content: space-around;
 }
 
-/*.imgagenLoader{
-    min-height: 250px;
-    min-width: 200px;
-}*/ 
+
+
+.cancion-container h2{
+    font-weight: lighter;
+    text-transform: uppercase;
+    color: #75cfbb;
+    letter-spacing: .06em;
+    font-size: small;
+    text-align: center;
+    
+}
+
+.cancion-contenido {
+    height: 190px;
+
+}
+
+.cancion-contenido img{
+    width: 42%;
+    border-radius: 13%;
+}
+
+.cacion-tarjeta {
+    width: 30%;
+    text-align: center;
+    margin-bottom: 3%;
+}
+
+p{
+    font-size: smaller;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 100;
+}
