@@ -10,19 +10,16 @@ class Home extends Component {
         super()  
         this.state ={
             input:'',
-            data: [],
             topCanciones: [],
-           // loader: true
-
         }
     }
     componentDidMount(){
-        fetch('https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/tracks&top?limit=10')
+        fetch('https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/albums&top?limit=10')
         .then(response => response.json()) //parciamos a json
         .then(data => this.setState({
             topCanciones: data.data,
            // loader: false
-        }, console.log("QUE LLEGO", data.data)))
+        }))
         .catch(error => console.log('El error fue:'+ error)) //preguntar si esta bien el catch
     }
 
@@ -42,35 +39,39 @@ class Home extends Component {
         })
     }
 
-    // buscador(){
-    //     if (this.state.input !=='') {
-    //         fetch() //aca va la api key de canciones 
-    //         .then (res=> res.json())
-    //         .then(data => {
-    //             this.setState ({data:data.results}, () => console.log(data.results))
-    //         })
-    //         .catch (e => console.log(e))
-    //     }
-    // }
+    buscador(){
+        if (this.state.input !=='') {
+            fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/search?q=${this.state.input}`) //aca va la api key de canciones 
+            .then (res=> res.json())
+            .then(data => {
+                this.setState ({topCanciones:data.data})  /* busca tanto por cancion, comno por album y artista */
+            })
+            .catch (e => console.log(e))
+        }
+        else{
+            fetch('https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/albums&top?limit=10')
+            .then(response => response.json()) //parciamos a json
+            .then(data => this.setState({
+                topCanciones: data.data,
+               // loader: false
+            }))
+            .catch(error => console.log('El error fue:'+ error)) //preguntar si esta bien el catch   
+        }
+    }
+
+
 
     render(){
+        console.log("estamos aca 1")
         return (
-
-            this.state.input.length === 0 ?
             //termino de configurar el buscador con onSubmit y OnChange
             <React.Fragment>
                 <form onSubmit={(event) => this.preventRecharge(event)}>
-                    <input type='text' placeholder='cancion' onChange={(event)=> this.saveChanges(event)} value={this.state.input} />
+                    <input type='text' placeholder='Album' onChange={(event)=> this.saveChanges(event)} value={this.state.input} />
                     <input type='submit' value='submit'/>  
                 </form>
-            </React.Fragment> //falta
-            : //si no pongo los dos puntos no separo entonces salta error. 
-
-
-           /* this.state.loader === true? /*  inserto if ternario, esto nos sirve para cuando creemos el loader
-            (<img src={loader} alt= 'cargando la pagina' className='imagenLoader' />) */
-            <React.Fragment>
-                <h1>Top 10 Canciones</h1>
+                {this.state.input == "" ? <h1>Top 10 Albums</h1>: <h1>usted busco por el termino {this.state.input}</h1>}  {/* me permite especificar ´por que estoy buscando, puede ser canciones o albums */}
+                
                 <Link to='/VerTodas'>Ver Todas</Link>
                 <section className='cancion-container'>
                 {
