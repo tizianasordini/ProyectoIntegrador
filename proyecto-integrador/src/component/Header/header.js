@@ -5,17 +5,19 @@ import './Header.css'
 
 function Header(props){
     return (
-        <ul>
-            <li>
-                <Link to='/'>Home</Link>
-            </li>
-            <li>
-                <Link to='/Favoritos'>Favoritos</Link>
-            </li>
-            <li>
-                <Link to='/VerTodas'>Ver más</Link>
-            </li>
-        </ul>
+        <header>
+            <ul className='navMenu'>
+                <li>
+                    <Link to='/'>Home</Link>
+                </li>
+                <li>
+                    <Link to='/Favoritos'>Favoritos</Link>
+                </li>
+                <li>
+                    <Link to='/VerTodas'>Ver más</Link>
+                </li>
+            </ul>
+        </header>
       )
 }
 /*function Header(props){

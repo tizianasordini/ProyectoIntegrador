@@ -1,4 +1,23 @@
 .navMenu {
+    display: flex;
+    justify-content: flex-start;
+    justify-content: flex-start;
+    
+    list-style: none;
+
+}
+
+.navMenu li{
+    margin: 10px 50px;
+}
+
+header {
+    text-decoration: none;
+}
+
+
+
+/*.navMenu {
     height: 80px;
     width: 100%;
     background: #081c3c;
@@ -35,4 +54,4 @@
 #menu ul li a {
     color: white;
     text-decoration: none;
-}
+}*/

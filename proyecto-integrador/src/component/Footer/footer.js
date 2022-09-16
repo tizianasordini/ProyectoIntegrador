@@ -5,10 +5,8 @@ function Footer() {
   return (
     <React.Fragment>
       <footer>
-        <div className="integrantes">
-          <p>Integrantes:</p>
-          
-          <ul>
+        <div>          
+          <ul className='ul-footer'>
               <li>Josefina Martinez Frugoni</li>
               <li>Tiziana Sordini</li>
               <li>Micaela Chandía</li>
