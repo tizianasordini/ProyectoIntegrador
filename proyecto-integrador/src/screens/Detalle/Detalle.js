@@ -1,23 +1,45 @@
-//import React, {Component} from 'react';
+import React, {Component} from 'react';
 
-/*class Detalle extends Component {
-  componentDidMount(
+class Detalle extends Component {
+
     constructor(props){
-      super(props)
-      this.state={
+        super(props)
+        this.state={
+          canciones: []
+        }
+    }
+    
+    componentDidMount(){
+      fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0`)
+        .then(response => response.json())
+        .then(data => this.setState({
+          canciones: data.data
+          
+        }))
+        .catch(error => console.log('El error fue ' + error))
+      }
+        
+      render(){
+        return (
+      
+          <div className='cancionDetalle'>
+            <img
+              src={`${this.canciones.cover}`}
+              alt={`Imagen del album de ${this.canciones.title}`}
+            />
+            <h1>{this.canciones.title}</h1>
+            <h2>{this.canciones.artist.name}</h2>
+            <h3>{this.canciones.album.title}</h3>
+            <p>Genero</p>
+            <p>Fecha de publicación</p>
+
+          </div>
+        )
         
       }
-    }
+}
 
-    fetch('https://thingproxy.freeboard.io/fetch/https://api.deezer.com/track/3135556')
-      .then (response => response.json())
-      .then (data) => console.log(data);
-      .catch (error) => console.log('El error fue ' + data);
-
-
-  )
-};*/
-
+export default Detalle
   
 
 
@@ -34,6 +56,3 @@ Nombre del artista.
 Nombre del Género al que pertenece el artista.
 Fecha de publicación.
 Lista de canciones del disco.*/
-
-
-//export default Detalle
