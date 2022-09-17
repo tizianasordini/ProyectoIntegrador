@@ -24,6 +24,22 @@ class Cancion extends Component{
         })
     }
 
+    agregarysacarDeFav(id){
+        let fav = []
+        let obtenerFav = localStorage.getItem("favoritos")
+        if (obtenerFav !== null) {
+            fav = JSON.parse(obtenerFav)}
+            if (fav.includes(id)) {
+                fav = fav.filter((elm) => elm !== id)
+            } else { 
+                fav.push(id)
+            }
+        
+        let localFav = JSON.stringify(fav)
+        localStorage.setItem("favoritos", localFav)
+        console.log(fav)
+    }
+
     render() {
         /*console.log("ESTAMOS ACA");
         {console.log("LLega a cada cancion", this.props.topCanciones)}*/
@@ -41,7 +57,8 @@ class Cancion extends Component{
                         ? <p onClick={() => this.masInformacion()}>Ver mas informacion</p> // me puedo hacer un if diciendo si mostras mas false y si si true
                         : <> <p onClick={() => this.menosInformacion()}>Ver menos informacion</p> 
                             <p>Nombre del artista: {this.props.Albums.artist.name}</p> 
-                            <p>Posición en el TOP: {this.props.Albums.position}</p> 
+                            <p>Posición en el TOP: {this.props.Albums.position}</p>
+                            <button onClick={() => this.agregarysacarDeFav(this.props.Albums.id)}>Agregar Favoritos</button> 
                         </>
                     }
                 

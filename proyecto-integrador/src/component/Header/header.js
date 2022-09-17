@@ -5,6 +5,7 @@ import './Header.css'
 
 function Header(props){
     return (
+        <>
         <header>
             <ul className='navMenu'>
                 <li>
@@ -18,6 +19,7 @@ function Header(props){
                 </li>
             </ul>
         </header>
+        </>
       )
 }
 
