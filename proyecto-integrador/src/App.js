@@ -2,7 +2,7 @@ import React from 'react'
 import {Switch, Route} from 'react-router-dom'
 import Header from './component/Header/Header'
 import Home from './screens/Home/Home'
-import VerTodas from './screens/VerTodas/VerTodas'
+import Canciones from './screens/Canciones/Canciones'
 import Favoritos from './screens/Favoritos/Favoritos'
 import Detalle from './screens/Detalle/Detalle'
 import NotFound from './screens/NotFound/NotFound'
@@ -15,7 +15,7 @@ function App() {
       <Header links={links}/>
       <Switch>
         <Route path='/' exact={true} component={Home} />
-        <Route path='/VerTodas' component={VerTodas} />
+        <Route path='/Canciones' component={Canciones} />
         <Route path='/Favoritos' component={Favoritos} />
         <Route path='/Detalle/:id' component={Detalle} />
         <Route path='' component={NotFound} />
