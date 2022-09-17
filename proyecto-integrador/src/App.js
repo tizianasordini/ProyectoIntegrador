@@ -1,6 +1,6 @@
 import React from 'react'
 import {Switch, Route} from 'react-router-dom'
-import Header from './component/Header/Header'
+import Header from './component/Header/header'
 import Home from './screens/Home/Home'
 import Canciones from './screens/Canciones/Canciones'
 import Favoritos from './screens/Favoritos/Favoritos'
