@@ -2,7 +2,21 @@
 
 *{
     color: lightgray;
-    background-color: black;
+    text-decoration: none;
+    background-color: maroon;
+}
+
+h1{
+ font-family: cursive;
+ text-transform: uppercase;
+ margin-bottom: 1%;
+ margin-top: 1%;
+}
+
+a{
+    font-family: cursive;
+    text-transform: uppercase;
+    font-size: medium;
 }
 
 
@@ -11,38 +25,51 @@
     flex-direction: row;
     justify-content: space-around;    
     flex-wrap: wrap;
+    margin-top: 2%;
 }
 
 
 
 .cancion-container h2{
-    font-weight: lighter;
+    font-weight: bold;
     text-transform: uppercase;
-    color: #75cfbb;
+    color: white;
     letter-spacing: .06em;
     font-size: small;
     text-align: center;
-    
+    background: none;
 }
 
 .cancion-contenido {
     height: 190px;
+    background: none;
 
 }
 
 .cancion-contenido img{
-    width: 42%;
-    border-radius: 13%;
+    width: 56%;
+    border-radius: 61%;
+    margin-top: 9%;
 }
 
 .cacion-tarjeta {
-    width: 30%;
+    width: 15%;
     text-align: center;
     margin-bottom: 3%;
+    border-radius: 32%;
+    background-color: salmon;
 }
 
 p{
     font-size: smaller;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: 100;
+    background: none;
+}
+
+input{
+    margin-top: 1%;
+    margin-bottom: 1.5%;
+    background: none;
+    border-radius: 10%;
 }
