@@ -7,12 +7,28 @@ class Favoritos extends Component {
     super()
     this.state={
       favoritos: [],
-      
     }
   }
 
   componentDidMount(){
-    this.setState({favoritos: JSON.parse(localStorage.getItem('favoritos'))})
+    let storage = localStorage.getItem("favoritos")
+    if(storage !== null){
+      let parsedStorage = JSON.parse(storage)
+      console.log(parsedStorage)
+
+      Promise.all(
+        parsedStorage.map(elm => {
+          return(
+            fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/album/${elm}`)
+            .then(resp => resp.json())
+          )
+        })
+      )
+      .then(data => this.setState({
+        favoritos:data
+      }))
+      .catch(err => console.log(err))      
+    }
   }
 
   render() {
@@ -20,7 +36,7 @@ class Favoritos extends Component {
       <>
       <section className='cancion-container'>
                 {
-                    this.state.topCanciones.slice(0,6).map((musica,idx) => <Cancion key={musica.title + idx} topCanciones={musica} />)
+                    this.state.favoritos.map((favorito,idx) => <Cancion key={favorito.title + idx} favoritos={favorito} />)
                 }
                 </section>
       </>
