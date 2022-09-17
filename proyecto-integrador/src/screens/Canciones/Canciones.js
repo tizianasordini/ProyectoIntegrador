@@ -11,14 +11,23 @@ class Canciones extends Component {
         }
     }
     componentDidMount(){
-        fetch('https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/albums&top')
+        fetch('https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/albums')
         .then(response => response.json()) 
         .then(data => this.setState({
             topCanciones: data.data,
+            backup: data.data,
            // loader: false
         }))
         .catch(error => console.log('El error fue:'+ error)) 
     }
+
+   /* cargarMas(){
+        fetch('https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/albums')
+        .then(response => response.json()) 
+        .then(data => this.setState({
+        }))
+        .catch(error => console.log('El error fue:'+ error)) 
+    }*/ //no tengo una api para agregar más albumes
 
     //preenir que se recargue la pagina
     preventRecharge(event){
@@ -59,16 +68,19 @@ class Canciones extends Component {
             //termino de configurar el buscador con onSubmit y OnChange
             <React.Fragment>
                 <form onSubmit={(event) => this.preventRecharge(event)}>
-                    <input type='text' placeholder='Album' onChange={(event)=> this.saveChanges(event)} value={this.state.input} />
+                    <input type='text' placeholder='Buscar...' onChange={(event)=> this.saveChanges(event)} value={this.state.input} />
                     <input type='submit' value='submit'/>  
                 </form>
-                {this.state.input === "" ? <h1>¡Todas los álbumes!</h1>: <h1>usted busco por el termino {this.state.input}</h1>}  {/* me permite especificar ´por que estoy buscando, puede ser canciones o albums */}
+                {this.state.input === "" ? <h1>¡Todas los álbumes!</h1>: <h1>usted busco por el termino {this.state.input}</h1>} 
                 
+                {this.state.topCanciones === "" ?
+                <h2>Cargando...</h2> : 
                 <section className='cancion-container'>
                 {
                     this.state.topCanciones.map((musica,idx) => <Cancion key={musica.title + idx} topCanciones={musica} />)
                 }
                 </section>
+                }
             </React.Fragment>
         )
     }
