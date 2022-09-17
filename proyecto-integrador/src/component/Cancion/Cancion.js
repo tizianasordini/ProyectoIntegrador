@@ -25,8 +25,8 @@ class Cancion extends Component{
     }
 
     render() {
-        console.log("ESTAMOS ACA");
-        {console.log("LLega a cada cancion", this.props.topCanciones)}
+        /*console.log("ESTAMOS ACA");
+        {console.log("LLega a cada cancion", this.props.topCanciones)}*/
         return (
             <React.Fragment>
                 <article className='cacion-tarjeta'>
@@ -37,7 +37,7 @@ class Cancion extends Component{
                     </Link> } 
 
                     {
-                        this.state.mostrarMas  == false//haciendo funcionalidad para ver mas o menos informacion sobre la descripcion de las tarjetas
+                        this.state.mostrarMas  === false//haciendo funcionalidad para ver mas o menos informacion sobre la descripcion de las tarjetas
                         ? <p onClick={() => this.masInformacion()}>Ver mas informacion</p> // me puedo hacer un if diciendo si mostras mas false y si si true
                         : <> <p onClick={() => this.menosInformacion()}>Ver menos informacion</p> 
                             <p>Nombre del artista: {this.props.topCanciones.artist.name}</p> 
