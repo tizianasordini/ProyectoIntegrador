@@ -30,9 +30,9 @@ class Cancion extends Component{
         return (
             <React.Fragment>
                 <article className='cacion-tarjeta'>
-                    {<Link className='cancion-contenido' to={`/Detalle/${this.props.topCanciones.id}`}>
-                        <img src={`https://e-cdns-images.dzcdn.net/images/cover/${this.props.topCanciones.md5_image}/120x120-000000-80-0-0.jpg`} alt={this.props.topCanciones.title} /> 
-                        <h2>{this.props.topCanciones.title}</h2>
+                    {<Link className='cancion-contenido' to={`/Detalle/${this.props.Albums.id}`}>
+                        <img src={`https://e-cdns-images.dzcdn.net/images/cover/${this.props.Albums.md5_image}/120x120-000000-80-0-0.jpg`} alt={this.props.Albums.title} /> 
+                        <h2>{this.props.Albums.title}</h2>
                         <p>{this.state.descripcion}</p>
                     </Link> } 
 
@@ -40,8 +40,8 @@ class Cancion extends Component{
                         this.state.mostrarMas  === false//haciendo funcionalidad para ver mas o menos informacion sobre la descripcion de las tarjetas
                         ? <p onClick={() => this.masInformacion()}>Ver mas informacion</p> // me puedo hacer un if diciendo si mostras mas false y si si true
                         : <> <p onClick={() => this.menosInformacion()}>Ver menos informacion</p> 
-                            <p>Nombre del artista: {this.props.topCanciones.artist.name}</p> 
-                            <p>Posición en el TOP: {this.props.topCanciones.position}</p> 
+                            <p>Nombre del artista: {this.props.Albums.artist.name}</p> 
+                            <p>Posición en el TOP: {this.props.Albums.position}</p> 
                         </>
                     }
                 
