@@ -7,7 +7,7 @@ class Canciones extends Component {
         super()  
         this.state ={
             input:'',
-            topCanciones: [],
+            Albums: [],
             loader: true
         }
     }
@@ -15,7 +15,7 @@ class Canciones extends Component {
         fetch('https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/albums')
         .then(response => response.json()) 
         .then(data => this.setState({
-            topCanciones: data.data,
+            Albums: data.data,
             backup: data.data,
            loader: false
         }))
@@ -49,7 +49,7 @@ class Canciones extends Component {
             fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/search?q=${this.state.input}`) 
             .then (res=> res.json())
             .then(data => {
-                this.setState ({topCanciones:data.data})  
+                this.setState ({Albums:data.data})  
             })
             .catch (e => console.log(e))
         }
@@ -57,7 +57,7 @@ class Canciones extends Component {
             fetch('https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/albums&top?limit=10')
             .then(response => response.json()) //parciamos a json
             .then(data => this.setState({
-                topCanciones: data.data,
+                Albums: data.data,
                // loader: false
             }))
             .catch(error => console.log('El error fue:'+ error))   
@@ -78,7 +78,7 @@ class Canciones extends Component {
                 <h2>Cargando...</h2> : 
                 <section className='cancion-container'>
                 {
-                    this.state.topCanciones.map((musica,idx) => <Cancion key={musica.title + idx} topCanciones={musica} />)
+                    this.state.Albums.map((musica,idx) => <Cancion key={musica.title + idx} Albums={musica} />)
                 }
                 </section>
                 }
