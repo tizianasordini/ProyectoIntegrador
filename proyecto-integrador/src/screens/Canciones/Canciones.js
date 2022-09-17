@@ -8,6 +8,7 @@ class Canciones extends Component {
         this.state ={
             input:'',
             topCanciones: [],
+            loader: true
         }
     }
     componentDidMount(){
@@ -16,7 +17,7 @@ class Canciones extends Component {
         .then(data => this.setState({
             topCanciones: data.data,
             backup: data.data,
-           // loader: false
+           loader: false
         }))
         .catch(error => console.log('El error fue:'+ error)) 
     }
@@ -73,7 +74,7 @@ class Canciones extends Component {
                 </form>
                 {this.state.input === "" ? <h1>¡Todas los álbumes!</h1>: <h1>usted busco por el termino {this.state.input}</h1>} 
                 
-                {this.state.topCanciones === "" ?
+                {this.state.loader ?
                 <h2>Cargando...</h2> : 
                 <section className='cancion-container'>
                 {
