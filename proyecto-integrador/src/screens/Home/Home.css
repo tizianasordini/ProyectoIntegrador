@@ -2,6 +2,7 @@
 
 *{
     color: lightgray;
+    text-decoration: none;
     background-color: black;
 }
 
@@ -18,7 +19,7 @@
 .cancion-container h2{
     font-weight: lighter;
     text-transform: uppercase;
-    color: #75cfbb;
+    color: white;
     letter-spacing: .06em;
     font-size: small;
     text-align: center;
@@ -27,18 +28,21 @@
 
 .cancion-contenido {
     height: 190px;
+    background: none;
 
 }
 
 .cancion-contenido img{
     width: 42%;
     border-radius: 13%;
+    margin-top: 3%;
 }
 
 .cacion-tarjeta {
     width: 30%;
     text-align: center;
     margin-bottom: 3%;
+    background-color: blueviolet;
 }
 
 p{

@@ -40,7 +40,7 @@ class Cancion extends Component{
                         this.state.mostrarMas  == false//haciendo funcionalidad para ver mas o menos informacion sobre la descripcion de las tarjetas
                         ? <p onClick={() => this.masInformacion()}>Ver mas informacion</p> // me puedo hacer un if diciendo si mostras mas false y si si true
                         : <> <p onClick={() => this.menosInformacion()}>Ver menos informacion</p> 
-                            <p>nombre del artista: {this.props.topCanciones.artist.name}</p> 
+                            <p>Nombre del artista: {this.props.topCanciones.artist.name}</p> 
                             <p>Posición en el TOP: {this.props.topCanciones.position}</p> 
                         </>
                     }
