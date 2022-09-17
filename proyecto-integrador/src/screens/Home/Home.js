@@ -10,14 +10,14 @@ class Home extends Component {
         super()  
         this.state ={
             input:'',
-            topCanciones: [],
+            Albums: [],
         }
     }
     componentDidMount(){
         fetch('https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/albums&top?limit=10')
         .then(response => response.json()) //parciamos a json
         .then(data => this.setState({
-            topCanciones: data.data,
+            Albums: data.data,
            // loader: false
         }))
         .catch(error => console.log('El error fue:'+ error)) //preguntar si esta bien el catch
@@ -44,7 +44,7 @@ class Home extends Component {
             fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/search?q=${this.state.input}`) //aca va la api key de canciones 
             .then (res=> res.json())
             .then(data => {
-                this.setState ({topCanciones:data.data})  /* busca tanto por cancion, comno por album y artista */
+                this.setState ({Albums:data.data})  /* busca tanto por cancion, comno por album y artista */
             })
             .catch (e => console.log(e))
         }
@@ -52,7 +52,7 @@ class Home extends Component {
             fetch('https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/albums&top?limit=10')
             .then(response => response.json()) //parciamos a json
             .then(data => this.setState({
-                topCanciones: data.data,
+                Albums: data.data,
                // loader: false
             }))
             .catch(error => console.log('El error fue:'+ error)) //preguntar si esta bien el catch   
@@ -75,7 +75,7 @@ class Home extends Component {
                 <Link to='/Canciones'>Ver Todas</Link>
                 <section className='cancion-container'>
                 {
-                    this.state.topCanciones.slice(0,6).map((musica,idx) => <Cancion key={musica.title + idx} topCanciones={musica} />)
+                    this.state.Albums.slice(0,6).map((musica,idx) => <Cancion key={musica.title + idx} Albums={musica} />)
                 }
                 </section>
             </React.Fragment>
