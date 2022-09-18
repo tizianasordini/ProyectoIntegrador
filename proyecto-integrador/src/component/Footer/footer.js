@@ -1,9 +1,9 @@
 import React from 'react'
-import './Footer.css'
+import './footer.css'
 
 function Footer() {
   return (
-    <React.Fragment>
+    <>
       <footer>
         <div>          
           <ul className='ul-footer'>
@@ -13,8 +13,8 @@ function Footer() {
           </ul>
         </div>
       </footer>
-    </React.Fragment>
+    </>
   )
 }
- export default Footer;
- 
+
+export default Footer;
