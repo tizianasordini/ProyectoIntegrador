@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import './Home.css'; 
 import Cancion from '../../component/Cancion/Cancion';
+import topMusica from "../../component/topMusica/topMusica";
 import { Link } from "react-router-dom";
 
 
@@ -11,6 +12,7 @@ class Home extends Component {
         this.state ={
             input:'',
             Albums: [],
+            topCanciones: [],
             loader: true
         }
     }
@@ -22,6 +24,15 @@ class Home extends Component {
             loader: false
         }))
         .catch(error => console.log('El error fue:'+ error)) //preguntar si esta bien el catch
+
+        //top artista
+        fetch('https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/tracks&top?limit=10')
+        .then(response => response.json()) //parciamos a json
+        .then(data => this.setState({
+            topCanciones: data.data,
+            loader: false
+        }))
+        .catch(error => console.log('El error fue:'+ error)) 
     }
 
     //hacer buscador
@@ -40,7 +51,7 @@ class Home extends Component {
         })
     }
 
-    buscador(){
+    buscador(){    //este buscador busca tanto por nombre de autor,cancion y album 
         if (this.state.input !=='') {
             fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/search/album?q=${this.state.input}`) //aca va la api key de canciones 
             .then (res=> res.json())
@@ -71,6 +82,7 @@ class Home extends Component {
                     <input type='text' placeholder='Buscar...' onChange={(event)=> this.saveChanges(event)} value={this.state.input} />
                     <input type='submit' value='submit'/>  
                 </form>
+                <div>
                 {this.state.input == "" ? <h1>Top 10 Álbumes</h1>: <h1>usted busco por el termino {this.state.input}</h1>}  {/* me permite especificar ´por que estoy buscando, puede ser canciones o albums */}
                 
                 <Link to='/Canciones'>Ver Todas</Link>
@@ -83,6 +95,17 @@ class Home extends Component {
                 }
                 </section>
                 }
+                </div>
+                <div>
+                <h1>Top 10 Canciones</h1>  {/* me permite especificar ´por que estoy buscando, puede ser canciones o albums */}
+                
+                <Link to='/Canciones'>Ver Todas</Link>
+                <section className='cancion-container'>
+                {
+                    this.state.Albums.slice(0,6).map((musica,idx) => <Cancion key={musica.title + idx} Albums={musica} />)
+                }
+                </section>
+                </div>
             </React.Fragment>
         )
     }
