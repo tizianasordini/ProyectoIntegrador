@@ -14,7 +14,6 @@ class Detalle extends Component {
     }
     
     componentDidMount(){
-      console.log("empiezo allá");
       fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/album/${this.state.id}`)
         .then(response => response.json())
         .then(data => this.setState({
@@ -25,24 +24,29 @@ class Detalle extends Component {
         }))
         .catch(error => console.log('El error fue ' + error))
       }
+      
         
       render(){
-        console.log("empiezo acá");
-        console.log(this.state.canciones.artist);
+        console.log(this.state.canciones);
         return (
           <>
           {this.state.loader ?
           <h2>Cargando...</h2> :
           <div className='cancionDetalle'>
             <img 
-            src={`https://e-cdns-images.dzcdn.net/images/cover/${this.state.canciones.md5_image}/120x120-000000-80-0-0.jpg`}
+            src={`https://e-cdns-images.dzcdn.net/images/cover/${this.state.canciones.md5_image}/1000x1000-000000-80-0-0.jpg`}
             alt={this.state.canciones.title} /> 
-            <h1>{this.state.canciones.title}</h1>
-            <h4>{this.state.canciones.artist.name}</h4>
-            <h6>album</h6>
-              
-            <p>Genero: </p>
+            <h1>Nombre del album: {this.state.canciones.title}</h1>
+            <h3>Nombre del artista: {this.state.canciones.artist.name}</h3>
+            <p>Genero: {this.state.canciones.genres.data[0].name}</p>
             <p>Fecha de publicación: {this.state.canciones.release_date}</p>
+            <br></br>
+            Canciónes:
+            <ul>
+              
+               {this.state.canciones.tracks.data.map((cancion) => <li><p>{(cancion.title)}</p></li>)}
+              
+            </ul>
           </div>
           }
           </>
@@ -60,11 +64,4 @@ Foto de la tapa del disco que contiene la canción.
 Nombre de la canción.
 Nombre del artista.
 Nombre del disco al que pertenece la canción.
-El player para escuchar la canción.
-Detalle del  álbum:
-Foto de la tapa del disco.
-Nombre del disco.
-Nombre del artista.
-Nombre del Género al que pertenece el artista.
-Fecha de publicación.
-Lista de canciones del disco.*/
+El player para escuchar la canción.*/

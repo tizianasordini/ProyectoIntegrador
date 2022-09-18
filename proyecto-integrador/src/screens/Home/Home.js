@@ -42,7 +42,7 @@ class Home extends Component {
 
     buscador(){
         if (this.state.input !=='') {
-            fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/search?q=${this.state.input}`) //aca va la api key de canciones 
+            fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/search/album?q=${this.state.input}`) //aca va la api key de canciones 
             .then (res=> res.json())
             .then(data => {
                 this.setState ({Albums:data.data})  /* busca tanto por cancion, comno por album y artista */
