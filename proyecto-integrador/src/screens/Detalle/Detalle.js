@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { Link, useParams } from "react-router-dom";
+import './Detalle.css'
 
 class Detalle extends Component {
 
@@ -37,11 +38,11 @@ class Detalle extends Component {
             src={`https://e-cdns-images.dzcdn.net/images/cover/${this.state.canciones.md5_image}/120x120-000000-80-0-0.jpg`}
             alt={this.state.canciones.title} /> 
             <h1>{this.state.canciones.title}</h1>
-            <h2></h2>
-         
-            <p>Genero</p>
+            <h4>Artista</h4>
+            <h6>Album</h6>
+              
+            <p>Genero: </p>
             <p>Fecha de publicación: {this.state.canciones.release_date}</p>
-
           </div>
           }
           </>
