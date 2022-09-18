@@ -1,40 +1,42 @@
 import React, {Component} from 'react';
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 class Detalle extends Component {
 
     constructor(props){
         super(props)
         this.state={
-          id: this.params.id,
+          id: this.props.match.params.id,
           canciones: []
         }
     }
     
     componentDidMount(){
-      console.log("estamos aca");
+      console.log("empiezo allá");
       fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/album/${this.state.id}`)
         .then(response => response.json())
         .then(data => this.setState({
-          canciones: data.data
+          canciones: data
+          
           
         }))
         .catch(error => console.log('El error fue ' + error))
       }
         
       render(){
+        console.log("empiezo acá");
+        console.log(this.state.canciones.artist);
         return (
-      
-          <div className='cancionDetalle'>
-            <img
-              src={`${this.canciones.cover}`}
-              alt={`Imagen del album de ${this.canciones.title}`}
-            />
-            <h1>{this.canciones.title}</h1>
-            <h2>{this.canciones.artist.name}</h2>
-            <h3>{this.canciones.album.title}</h3>
+
+         <div className='cancionDetalle'>
+            <img 
+            src={`https://e-cdns-images.dzcdn.net/images/cover/${this.state.canciones.md5_image}/120x120-000000-80-0-0.jpg`}
+            alt={this.state.canciones.title} /> 
+            <h1>{this.state.canciones.title}</h1>
+            <h2></h2>
+         
             <p>Genero</p>
-            <p>Fecha de publicación</p>
+            <p>Fecha de publicación: {this.state.canciones.release_date}</p>
 
           </div>
         )

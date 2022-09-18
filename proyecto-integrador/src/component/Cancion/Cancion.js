@@ -41,12 +41,12 @@ class Cancion extends Component{
     }
 
     render() {
-        /*console.log("ESTAMOS ACA");
-        {console.log("LLega a cada cancion", this.props.topCanciones)}*/
+        console.log("ESTAMOS ACA");
+        {console.log(this.props.Albums)}
         return (
             <React.Fragment>
                 <article className='cacion-tarjeta'>
-                    {<Link className='cancion-contenido' to={`/Detalle/${this.props.Albums.id}`}>
+                    {<Link className='cancion-contenido' to={`/Detalle/id/${this.props.Albums.id}`}>
                         <img src={`https://e-cdns-images.dzcdn.net/images/cover/${this.props.Albums.md5_image}/120x120-000000-80-0-0.jpg`} alt={this.props.Albums.title} /> 
                         <h2>{this.props.Albums.title}</h2>
                         <p>{this.state.descripcion}</p>
