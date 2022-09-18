@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import { Link } from 'react-router-dom';
 
 
-class topMusica extends Component{
+class TopMusica extends Component{
     constructor(props){
         super(props)
         this.state = {
@@ -46,7 +46,7 @@ class topMusica extends Component{
         return (
             <React.Fragment>
                 <article className='cacion-tarjeta'>
-                    {<Link className='cancion-contenido' to={`/Detalle/id/${this.props.topCanciones.id}`}>
+                    {<Link className='cancion-contenido' to={`/DetalleCancion/id/${this.props.topCanciones.id}`}>
                         <img src={`https://e-cdns-images.dzcdn.net/images/artist/${this.props.topCanciones.md5_image}/120x120-000000-80-0-0.jpg`} alt={this.props.topCanciones.title} /> 
                         <h2>{this.props.topCanciones.title}</h2>
                         <p>{this.state.descripcion}</p>
@@ -68,4 +68,4 @@ class topMusica extends Component{
     }
 }
 
-export default topMusica;
+export default TopMusica;

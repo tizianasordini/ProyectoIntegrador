@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-import { Link, useParams } from "react-router-dom";
-import './Detalle.css'
+import './DetalleAlbum.css'
 
-class Detalle extends Component {
+class DetalleAlbum extends Component {
 
     constructor(props){
         super(props)
@@ -55,7 +54,7 @@ class Detalle extends Component {
       }
 }
 
-export default Detalle
+export default DetalleAlbum;
   
 
 

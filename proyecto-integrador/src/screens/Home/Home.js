@@ -1,8 +1,9 @@
 import React, {Component} from "react";
 import './Home.css'; 
 import Cancion from '../../component/Cancion/Cancion';
-import topMusica from "../../component/topMusica/topMusica";
 import { Link } from "react-router-dom";
+import TopMusica from "../../component/TopMusica/TopMusica";
+
 
 
 
@@ -46,7 +47,6 @@ class Home extends Component {
 
     saveChanges(event){
         this.setState({input: event.target.value}, () => {  //como vimos en clase target es donde se encuentra el input.(lo que queremos modificar)
-            console.log(this.state.input);
             this.buscador()
         })
     }
@@ -59,6 +59,14 @@ class Home extends Component {
                 this.setState ({Albums:data.data})  /* busca tanto por cancion, comno por album y artista */
             })
             .catch (e => console.log(e))
+
+            //buscador top musica
+            fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/search/track?q=${this.state.input}`) //aca va la api key de canciones 
+            .then (res=> res.json())
+            .then(data => {
+                this.setState ({topCanciones:data.data})  /* busca tanto por cancion, comno por album y artista */
+            })
+            .catch (e => console.log(e))
         }
         else{
             fetch('https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/albums&top?limit=10')
@@ -68,13 +76,22 @@ class Home extends Component {
                 loader: false
             }))
             .catch(error => console.log('El error fue:'+ error)) //preguntar si esta bien el catch   
+
+            //top musica
+            fetch('https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/tracks&top?limit=10')
+            .then(response => response.json()) //parciamos a json
+            .then(data => this.setState({
+                topCanciones: data.data,
+                loader: false
+            }))
+            .catch(error => console.log('El error fue:'+ error)) 
         }
     }
 
 
 
     render(){
-        console.log("estamos aca 1")
+      
         return (
             //termino de configurar el buscador con onSubmit y OnChange
             <React.Fragment>
@@ -83,7 +100,7 @@ class Home extends Component {
                     <input type='submit' value='submit'/>  
                 </form>
                 <div>
-                {this.state.input == "" ? <h1>Top 10 Álbumes</h1>: <h1>usted busco por el termino {this.state.input}</h1>}  {/* me permite especificar ´por que estoy buscando, puede ser canciones o albums */}
+                {this.state.input == "" ? <h1>Top Álbumes</h1>: <h1>usted busco por el termino {this.state.input}</h1>}  {/* me permite especificar ´por que estoy buscando, puede ser canciones o albums */}
                 
                 <Link to='/Canciones'>Ver Todas</Link>
 
@@ -97,12 +114,12 @@ class Home extends Component {
                 }
                 </div>
                 <div>
-                <h1>Top 10 Canciones</h1>  {/* me permite especificar ´por que estoy buscando, puede ser canciones o albums */}
+                {this.state.input == "" ? <h1>Top Canciones</h1>: <h1>usted busco por el termino {this.state.input}</h1>}{/* me permite especificar ´por que estoy buscando, puede ser canciones o albums */}
                 
                 <Link to='/Canciones'>Ver Todas</Link>
                 <section className='cancion-container'>
                 {
-                    this.state.Albums.slice(0,6).map((musica,idx) => <Cancion key={musica.title + idx} Albums={musica} />)
+                    this.state.topCanciones.slice(0,6).map((musica,idx) => <TopMusica key={musica.title + idx} topCanciones={musica} />)
                 }
                 </section>
                 </div>

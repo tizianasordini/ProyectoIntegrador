@@ -4,7 +4,8 @@ import Header from './component/Header/Header'
 import Home from './screens/Home/Home'
 import Canciones from './screens/Canciones/Canciones'
 import Favoritos from './screens/Favoritos/Favoritos'
-import Detalle from './screens/Detalle/Detalle'
+import DetalleAlbum from './screens/DetalleAlbum/DetalleAlbum'
+import DetalleCancion from './screens/DetalleCancion/DetalleCancion'
 import NotFound from './screens/NotFound/NotFound'
 import Footer from './component/Footer/Footer'
 
@@ -17,7 +18,8 @@ function App() {
         <Route path='/' exact={true} component={Home} />
         <Route path='/Canciones' component={Canciones} />
         <Route path='/Favoritos' component={Favoritos} />
-        <Route path='/Detalle/id/:id' component={Detalle} />
+        <Route path='/DetalleAlbum/id/:id' component={DetalleAlbum} />
+        <Route path='/DetalleCancion/id/:id' component={DetalleCancion} />
         <Route path='' component={NotFound} />
       </Switch>
       <Footer />

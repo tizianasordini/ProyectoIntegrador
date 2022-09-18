@@ -11,17 +11,25 @@ class Canciones extends Component {
             loader: true
         }
     }
+    
     componentDidMount(){
-        fetch('https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/albums')
-        .then(response => response.json()) 
+        fetch('https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/albums&top?limit=10')
+        .then(response => response.json()) //parciamos a json
         .then(data => this.setState({
             Albums: data.data,
-            backup: data.data,
+            loader: false
+        }))
+        .catch(error => console.log('El error fue:'+ error)) //preguntar si esta bien el catch
+
+        //top artista
+        fetch('https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/tracks&top?limit=10')
+        .then(response => response.json()) //parciamos a json
+        .then(data => this.setState({
+            topCanciones: data.data,
             loader: false
         }))
         .catch(error => console.log('El error fue:'+ error)) 
     }
-
     /* cargarMas(){
         fetch('https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/albums')
         .then(response => response.json()) 
@@ -44,12 +52,20 @@ class Canciones extends Component {
         })
     }
 
-    buscador(){
+    buscador(){    //este buscador busca tanto por nombre de autor,cancion y album 
         if (this.state.input !=='') {
-            fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/search?q=${this.state.input}`) 
+            fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/search/album?q=${this.state.input}`) //aca va la api key de canciones 
             .then (res=> res.json())
             .then(data => {
-                this.setState ({Albums:data.data})  
+                this.setState ({Albums:data.data})  /* busca tanto por cancion, comno por album y artista */
+            })
+            .catch (e => console.log(e))
+
+            //buscador top musica
+            fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/search/track?q=${this.state.input}`) //aca va la api key de canciones 
+            .then (res=> res.json())
+            .then(data => {
+                this.setState ({topCanciones:data.data})  /* busca tanto por cancion, comno por album y artista */
             })
             .catch (e => console.log(e))
         }
@@ -58,9 +74,18 @@ class Canciones extends Component {
             .then(response => response.json()) //parciamos a json
             .then(data => this.setState({
                 Albums: data.data,
-               // loader: false
+                loader: false
             }))
-            .catch(error => console.log('El error fue:'+ error))   
+            .catch(error => console.log('El error fue:'+ error)) //preguntar si esta bien el catch   
+
+            //top musica
+            fetch('https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/tracks&top?limit=10')
+            .then(response => response.json()) //parciamos a json
+            .then(data => this.setState({
+                topCanciones: data.data,
+                loader: false
+            }))
+            .catch(error => console.log('El error fue:'+ error)) 
         }
     }
 
