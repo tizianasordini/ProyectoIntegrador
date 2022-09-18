@@ -15,7 +15,7 @@ function Header(props){
                     <Link to='/Favoritos'>Favoritos</Link>
                 </li>
                 <li>
-                    <Link to='/Canciones'>Ver más</Link>
+                    <Link to='/Canciones'>Álbumes</Link>
                 </li>
             </ul>
         </header>

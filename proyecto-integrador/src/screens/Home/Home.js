@@ -67,10 +67,10 @@ class Home extends Component {
             //termino de configurar el buscador con onSubmit y OnChange
             <React.Fragment>
                 <form onSubmit={(event) => this.preventRecharge(event)}>
-                    <input type='text' placeholder='Album' onChange={(event)=> this.saveChanges(event)} value={this.state.input} />
+                    <input type='text' placeholder='Buscar...' onChange={(event)=> this.saveChanges(event)} value={this.state.input} />
                     <input type='submit' value='submit'/>  
                 </form>
-                {this.state.input == "" ? <h1>Top 10 Albums</h1>: <h1>usted busco por el termino {this.state.input}</h1>}  {/* me permite especificar ´por que estoy buscando, puede ser canciones o albums */}
+                {this.state.input == "" ? <h1>Top 10 Álbumes</h1>: <h1>usted busco por el termino {this.state.input}</h1>}  {/* me permite especificar ´por que estoy buscando, puede ser canciones o albums */}
                 
                 <Link to='/Canciones'>Ver Todas</Link>
                 <section className='cancion-container'>

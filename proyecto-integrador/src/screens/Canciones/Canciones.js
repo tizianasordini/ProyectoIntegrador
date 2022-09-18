@@ -17,12 +17,12 @@ class Canciones extends Component {
         .then(data => this.setState({
             Albums: data.data,
             backup: data.data,
-           loader: false
+            loader: false
         }))
         .catch(error => console.log('El error fue:'+ error)) 
     }
 
-   /* cargarMas(){
+    /* cargarMas(){
         fetch('https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/albums')
         .then(response => response.json()) 
         .then(data => this.setState({
@@ -72,7 +72,7 @@ class Canciones extends Component {
                     <input type='text' placeholder='Buscar...' onChange={(event)=> this.saveChanges(event)} value={this.state.input} />
                     <input type='submit' value='submit'/>  
                 </form>
-                {this.state.input === "" ? <h1>¡Todas los álbumes!</h1>: <h1>usted busco por el termino {this.state.input}</h1>} 
+                {this.state.input === "" ? <h1>¡Todos los álbumes!</h1>: <h1>usted busco por el termino {this.state.input}</h1>} 
                 
                 {this.state.loader ?
                 <h2>Cargando...</h2> : 
