@@ -11,6 +11,7 @@ class Home extends Component {
         this.state ={
             input:'',
             Albums: [],
+            loader: true
         }
     }
     componentDidMount(){
@@ -18,7 +19,7 @@ class Home extends Component {
         .then(response => response.json()) //parciamos a json
         .then(data => this.setState({
             Albums: data.data,
-           // loader: false
+            loader: false
         }))
         .catch(error => console.log('El error fue:'+ error)) //preguntar si esta bien el catch
     }
@@ -53,7 +54,7 @@ class Home extends Component {
             .then(response => response.json()) //parciamos a json
             .then(data => this.setState({
                 Albums: data.data,
-               // loader: false
+                loader: false
             }))
             .catch(error => console.log('El error fue:'+ error)) //preguntar si esta bien el catch   
         }
@@ -73,11 +74,15 @@ class Home extends Component {
                 {this.state.input == "" ? <h1>Top 10 Álbumes</h1>: <h1>usted busco por el termino {this.state.input}</h1>}  {/* me permite especificar ´por que estoy buscando, puede ser canciones o albums */}
                 
                 <Link to='/Canciones'>Ver Todas</Link>
+
+                {this.state.loader ?
+                <h2>Cargando...</h2> :
                 <section className='cancion-container'>
                 {
                     this.state.Albums.slice(0,6).map((musica,idx) => <Cancion key={musica.title + idx} Albums={musica} />)
                 }
                 </section>
+                }
             </React.Fragment>
         )
     }
