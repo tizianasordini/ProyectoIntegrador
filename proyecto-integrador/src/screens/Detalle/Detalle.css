@@ -1,12 +1,37 @@
 .cancionDetalle {
-    display: flex;
+    margin-right: 40%;
     justify-content: center;
     flex-direction: column;
-    margin: 50px 400px
+    margin-bottom: 5%;
+    margin-top: 3%;
+    background-color: salmon;
+    border-radius: 5%;
+    margin-left: 40%;
+    text-align: center;
+    width: 21%;
 }
 
 .cancionDetalle img {
-    width: 100%;
-    border-radius: 1%;
+    width: 68%;
+    justify-content: center;
+    border-radius: 67%;
+    margin-top: 2%;
+}
+
+ul{
+    list-style: none;
+    display: inline-table;
+    margin-top: -3%;
+    background: none;
+}
+
+h3{
+    margin-top: 3%;
+    font-size: small;
+    background: none;
+}
+
+li{
+    background: none;
 }
 
