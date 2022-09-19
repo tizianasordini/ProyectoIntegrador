@@ -8,6 +8,7 @@ function Header(props){
         <>
         <header>
             <ul className='navMenu'>
+                <img to className='logo' src={'/img/logo3.png'} />
                 <li>
                     <Link to='/'>Home</Link>
                 </li>
