@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import './Home.css'; 
-import Cancion from '../../component/Cancion/Cancion';
+import Album from "../../component/Album/Album";
 import { Link } from "react-router-dom";
 import TopMusica from "../../component/TopMusica/TopMusica";
 
@@ -102,13 +102,13 @@ class Home extends Component {
                 <div>
                 {this.state.input == "" ? <h1>Top Álbumes</h1>: <h1>usted busco por el termino {this.state.input}</h1>}  {/* me permite especificar ´por que estoy buscando, puede ser canciones o albums */}
                 
-                <Link to='/Canciones'>Ver Todas</Link>
+                <Link to='/Albumes'>Ver Todas</Link>
 
                 {this.state.loader ?
                 <h2>Cargando...</h2> :
                 <section className='cancion-container'>
                 {
-                    this.state.Albums.slice(0,6).map((musica,idx) => <Cancion key={musica.title + idx} Albums={musica} />)
+                    this.state.Albums.slice(0,6).map((musica,idx) => <Album key={musica.title + idx} Albums={musica} />)
                 }
                 </section>
                 }

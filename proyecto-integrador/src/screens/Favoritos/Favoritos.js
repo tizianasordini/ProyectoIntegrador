@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import "./Favoritos.css"
-import Cancion from "../../component/Cancion/Cancion"
+import Album from '../../component/Album/Album'
 
 class Favoritos extends Component {
   constructor(){
@@ -26,7 +26,9 @@ class Favoritos extends Component {
             .then((data) => this.setState({ favoritos: this.state.favoritos.concat(data) }))
 
             .catch(err => console.log(err))  
+            
           )
+          
 
         })
 
@@ -39,7 +41,7 @@ class Favoritos extends Component {
     return (
       <>
       <section className='cancion-container'>
-        {this.state.favoritos.length !== 0 ? this.state.favoritos.map((favorito,idx) => <Cancion key={favorito.title + idx} Albums={favorito} />):<p>No tenes favoritos</p>}
+        {this.state.favoritos.length !== 0 ? this.state.favoritos.map((favorito,idx) => <Album key={favorito.title + idx} Albums={favorito} />):<p>No tenes favoritos</p>}
                 
       </section>
 

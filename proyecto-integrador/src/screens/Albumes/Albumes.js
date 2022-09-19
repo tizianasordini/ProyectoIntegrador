@@ -1,27 +1,26 @@
 import React, {Component} from "react";
-import TopMusica from "../../component/TopMusica/TopMusica";
+import Album from "../../component/Album/Album";
 
-class Canciones extends Component {
+class Albumes extends Component {
     constructor(){  
         super()  
         this.state ={
             input:'',
-            topCanciones: [],
+            Albums: [],
             loader: true
         }
     }
     
     componentDidMount(){
-
-        fetch('https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/tracks&top?limit=10')
+        fetch('https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/albums&top?limit=10')
         .then(response => response.json()) //parciamos a json
         .then(data => this.setState({
-            topCanciones: data.data,
+            Albums: data.data,
             loader: false
         }))
-        .catch(error => console.log('El error fue:'+ error)) 
+        .catch(error => console.log('El error fue:'+ error)) //preguntar si esta bien el catch
+
     }
-    
     /* cargarMas(){
         fetch('https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/albums')
         .then(response => response.json()) 
@@ -89,13 +88,13 @@ class Canciones extends Component {
                     <input type='text' placeholder='Buscar...' onChange={(event)=> this.saveChanges(event)} value={this.state.input} />
                     <input type='submit' value='submit'/>  
                 </form>
-                {this.state.input === "" ? <h1>¡Todas las Canciones !</h1>: <h1>usted busco por el termino {this.state.input}</h1>} 
+                {this.state.input === "" ? <h1>¡Todos los álbumes!</h1>: <h1>usted busco por el termino {this.state.input}</h1>} 
                 
                 {this.state.loader ?
                 <h2>Cargando...</h2> : 
                 <section className='cancion-container'>
                 {
-                    this.state.topCanciones.map((musica,idx) => <TopMusica key={musica.title + idx} topCanciones={musica} />)
+                    this.state.Albums.map((musica,idx) => <Album key={musica.title + idx} Albums={musica} />)
                 }
                 </section>
                 }
@@ -104,4 +103,4 @@ class Canciones extends Component {
     }
 }
 
-export default Canciones; 
+export default Albumes; 

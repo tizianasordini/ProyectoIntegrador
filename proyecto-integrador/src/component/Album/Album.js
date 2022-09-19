@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import { Link } from 'react-router-dom';
 
 
-class Cancion extends Component{
+class Album extends Component{
     constructor(props){
         super(props)
         this.state = {
@@ -68,4 +68,4 @@ class Cancion extends Component{
     }
 }
 
-export default Cancion; 
+export default Album; 
