@@ -11,10 +11,9 @@ import NotFound from './screens/NotFound/NotFound'
 import Footer from './component/Footer/Footer'
 
 function App() {
-  const links = ['Home', 'Favoritos', 'Ver más']
   return (
     <>
-      <Header links={links}/>
+      <Header />
       <Switch>
         <Route path='/' exact={true} component={Home} />
         <Route path='/Canciones' component={Canciones} />
