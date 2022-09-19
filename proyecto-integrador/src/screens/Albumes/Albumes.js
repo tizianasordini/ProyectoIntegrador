@@ -65,7 +65,7 @@ class Albumes extends Component {
             .then(response => response.json()) //parciamos a json
             .then(data => this.setState({
                 Albums: data.data,
-                loader: false
+                
             }))
             .catch(error => console.log('El error fue:'+ error)) //preguntar si esta bien el catch   
 
@@ -74,7 +74,7 @@ class Albumes extends Component {
             .then(response => response.json()) //parciamos a json
             .then(data => this.setState({
                 topCanciones: data.data,
-                loader: false
+                
             }))
             .catch(error => console.log('El error fue:'+ error)) 
         }
